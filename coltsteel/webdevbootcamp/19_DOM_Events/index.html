@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="#" type="image/x-icon">
+    <style>
+        * {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Javascript Events</h2>
+    <div id="myId"></div>
+    <div class="myClass">
+
+    </div>
+    <!--    First option    -->
+    <button id="v1" onclick="console.log('You click the first option')">First option!</button>
+    <br>    
+    <br>
+    <!--    Second option    -->
+    <button id="v2">Second option!</button>
+    <br>
+    <br>
+    <!--    Another option    -->
+    <button id="va">Another option!</button>
+    <br>
+    <br>
+    <!--    Third option    -->
+    <button id="v3">Third option!</button>
+    <br>
+    <br>
+    <!--    Change color option    -->
+    <h3>The color is <span id="tC"></span></h3>  
+    <button id="cC">Change color!</button>
+    <br>
+    <br>
+    <!--    Button colors    -->  
+    <h3>Button colors</h3>  
+    <button class="cCC">Click me!</button>
+    <button class="cCC">Click me!</button>
+    <button class="cCC">Click me!</button>
+    <button class="cCC">Click me!</button>
+    <button class="cCC">Click me!</button>
+    <br>
+    <button class="cCC">Click me!</button>
+    <button class="cCC">Click me!</button>
+    <button class="cCC">Click me!</button>
+    <button class="cCC">Click me!</button>
+    <button class="cCC">Click me!</button>
+    <br>
+    <button class="cCC">Click me!</button>
+    <button class="cCC">Click me!</button>
+    <button class="cCC">Click me!</button>
+    <button class="cCC">Click me!</button>
+    <button class="cCC">Click me!</button>
+    <br>
+    <br>
+    <!--    Forms   -->
+    <h3>Form events</h3>
+    <form action="/login" id="loginId">
+        <label for="userId" name="username">Username:</label>
+        <input type="text" name="username" id="userId" placeholder="username">
+        <br>
+        <label for="passwordId" name="password">Password:</label>
+        <input type="password" name="password" id="passwordId" placeholder="password">
+        <br>
+        <button>Register</button>
+    </form>
+    <br>
+    <br>
+    <h3>Grocery List</h3>
+    <form action="/nowhere" id="anotherForm">
+        <label for="product">Enter A Product</label>
+        <input type="text" id="product" name="product">
+        <br>
+        <label for="qty">Enter A Quantity</label>
+        <input type="number" id="qty" name="qty">
+        <br>
+        <button>Submit</button>
+    </form>
+    <ul id="list"></ul>
+
+</body>
+    <script>
+        // Second option
+        let btn2 = document.querySelector("#v2");
+        btn2.onclick = function(){
+            console.log('You click the second option')
+        }
+
+        document.querySelector("#va").onclick = () => {
+            console.log('You click another option')
+        }
+
+        // Third option and recommended
+        let btn3 = document.querySelector("#v3");
+        btn3.addEventListener('click', () => {
+            console.log('You click third option')
+        })
+
+        let makeRandomColor = () => {
+            let r = Math.floor(Math.random() * 255);
+            let g = Math.floor(Math.random() * 255);
+            let b = Math.floor(Math.random() * 255);
+            return newColor = `rgb(${r}, ${b}, ${b})`;
+        }
+
+        // Change background color
+        let btncC = document.querySelector("#cC");
+        let mySpan = document.querySelector("#tC");
+        btncC.addEventListener('click', function() {
+            let newColor = makeRandomColor();
+            document.body.style.backgroundColor = newColor;
+            mySpan.innerText = newColor;
+        })
+
+        // Change button color
+        let buttons = document.querySelectorAll(".cCC");
+
+        for (let button of buttons) {
+            button.addEventListener('click', function () {
+                button.style.backgroundColor = makeRandomColor();
+                button.style.color = makeRandomColor();
+            })
+        }
+
+        // Forms
+        let loginForm = document.querySelector("#loginId");
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            console.log("Form submited!")
+        }) 
+
+        // Another form excercise
+        let form = document.querySelector('#anotherForm');
+        let ul = document.querySelector('#list');
+ 
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let qty = form.elements.qty.value;
+            let product = form.elements.product.value;
+            let li = document.createElement('li');
+            li.innerText = `${qty} ${product}`;
+            ul.appendChild(li);
+            form.reset();
+        });
+
+    </script>
+
+</html>
