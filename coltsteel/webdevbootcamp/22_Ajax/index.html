@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIS</title>
+</head>
+<body>
+    <h1>APIs execrcise</h1>
+</body>
+<script>
+    let req = new XMLHttpRequest();
+
+    req.onload = function () {
+        console.log("IT LOADED!!!");
+        // Se recive el texto y hay que convertirlo a un objeto
+        let text = JSON.parse(this.responseText);
+        console.log(text.name, text.height);
+    };
+
+    req.onerror = function () {
+        console.log("ERROR!!!!");
+        console.log(this);
+    };
+
+    req.open("GET", "https://swapi.dev/api/people/1/")
+    req.send();
+    
+</script>
+</html>
