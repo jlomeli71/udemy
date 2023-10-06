@@ -1,5 +1,6 @@
 # env file
 .env
+venv
 
 # Json files
 *.json
