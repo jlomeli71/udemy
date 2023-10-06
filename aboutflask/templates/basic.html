@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--            Some basic example         -->
+    <h1>Welcome {{name}}!</h1>
+    <img src="../static/puppy.jpg" alt="puppy">
+    
+    <h3>I like {{my_list[1]}}</h3>
+    <h3>I enjoy {{my_dict['hobbies']}}</h3>
+
+    <ul>
+        {% for item in my_list %}
+        <li>{{item}}</li>
+        {% endfor %}
+    </ul>
+    <!--            -->
+
+
+</body>
+</html>
